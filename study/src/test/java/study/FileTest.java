@@ -30,7 +30,7 @@ class FileTest {
         final String fileName = "nextstep.txt";
 
         // todo
-        final String actual = "/Users/antaeho/Desktop/java-http-main/nextstep.txt";
+        final String actual = "study/src/test/resources/nextstep.txt";
 
         assertThat(actual).endsWith(fileName);
     }
@@ -46,7 +46,7 @@ class FileTest {
         final String fileName = "nextstep.txt";
 
         // todo
-        final Path path = Path.of("/Users/antaeho/Desktop/java-http-main/nextstep.txt");
+        final Path path = Path.of("/Users/antaeho/Desktop/java-http-main/study/src/test/resources/nextstep.txt");
 
         System.out.println("파일 경로: " + path);
         System.out.println("절대 경로: " + path.toAbsolutePath());

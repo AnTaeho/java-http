@@ -1,5 +1,7 @@
 package cache.com.example;
 
+import cache.com.example.version.ResourceVersion;
+import java.time.Duration;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class GreetingController {
+
+    private final ResourceVersion resourceVersion;
+
+    public GreetingController(ResourceVersion resourceVersion) {
+        this.resourceVersion = resourceVersion;
+    }
 
     @GetMapping("/")
     public String index() {
@@ -29,12 +37,13 @@ public class GreetingController {
     }
 
     @GetMapping("/etag")
-    public String etag() {
+    public String etag(final HttpServletResponse response) {
+        response.addHeader(HttpHeaders.ETAG, "etag");
         return "index";
     }
 
     @GetMapping("/resource-versioning")
-    public String resourceVersioning() {
+    public String resourceVersioning(final HttpServletResponse response) {
         return "resource-versioning";
     }
 }
